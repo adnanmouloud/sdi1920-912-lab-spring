@@ -8,6 +8,7 @@ public class Sdi1920912LabSpringApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(Sdi1920912LabSpringApplication.class, args);
+		
 	}
 
 }
