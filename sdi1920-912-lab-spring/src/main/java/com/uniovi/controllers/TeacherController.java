@@ -36,18 +36,18 @@ public class TeacherController {
 	}
 	
 	@RequestMapping(value = "/teacher/add", method = RequestMethod.POST)
-	public String setMark(@ModelAttribute Teacher teacher) {
+	public String setTeacher(@ModelAttribute Teacher teacher) {
 		teacherService.addTeacher(teacher);
 		return "redirect:/teacher/list";
 
 	}
 
-	@RequestMapping("/teacher/add")
-	public String addTeacher(@ModelAttribute Teacher teacher) {
-		teacherService.addTeacher(teacher);
-		return "Adding teacher";
-
-	}
+//	@RequestMapping("/teacher/add")
+//	public String addTeacher(@ModelAttribute Teacher teacher) {
+//		teacherService.addTeacher(teacher);
+//		return "Adding teacher";
+//
+//	}
 
 	@RequestMapping("/teacher/delete/{id}")
 	public String deleteTeacher(@PathVariable Long id) {
