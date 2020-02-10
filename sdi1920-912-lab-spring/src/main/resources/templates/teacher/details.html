@@ -23,8 +23,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/mark/list">Ver Notas</a></li>
-		<li><a href="/mark/add">Agregar Nota</a></li>
+        <li class="active"><a href="/teacher/list">Ver Profesores</a></li>
+		<li><a href="/teacher/add">Añadir Profesor</a></li>
         <li><a href="/mark/filter">Filtrar</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -38,20 +38,40 @@
 
 
 <div class="container">
-  <h2>Detalles de la nota</h2>                                                                            
-  <div class="panel panel-default">
-	  <div class="panel-heading">Descripción</div>
-	  <div class="panel-body">
-		Ejercicio 1
-	  </div>
-  </div>
-  <div class="panel panel-default">
-	  <div class="panel-heading">Puntuación</div>
-	  <div class="panel-body">
-		100
-	  </div>
-  </div>
+  <h2>Editar Profesor</h2>
+  <form class="form-horizontal" method="post" th:action="${'/teacher/edit/' + teacher.id}">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="description">DNI:</label>
+      <div class="col-sm-10">
+        <input th:value="${mark.dni}" type="text" class="form-control" name="dni" placeholder="Ejemplo Ejercicio 1" required="true" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Nombre:</label>
+      <div class="col-sm-10">          
+        <input th:value="${teacher.nombre}" type="text" class="form-control" name="nombre"  required="true" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Apellidos:</label>
+      <div class="col-sm-10">          
+        <input th:value="${teacher.apellidos}" type="text" class="form-control" name="apellidos"  required="true" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Categoria:</label>
+      <div class="col-sm-10">          
+        <input th:value="${teacher.categoria}" type="text" class="form-control" name="categoria" required="true" />
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary">Modificar</button>
+      </div>
+    </div>
+  </form>
 </div>
+
 
 
 </body>

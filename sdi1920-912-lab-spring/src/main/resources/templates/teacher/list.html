@@ -23,8 +23,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="/mark/list">Ver Notas</a></li>
-		<li><a href="/mark/add">Agregar Nota</a></li>
+        <li class="active"><a href="/teacher/list">Ver Profesores</a></li>
+		<li><a href="/teacher/add">Añadir Profesor</a></li>
         <li><a href="/mark/filter">Filtrar</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -38,15 +38,17 @@
 
 
 <div class="container">
-  <h2>Notas</h2>
-  <p>Las notas que actualmente figuran en el sistema son las siguientes:</p>                                                                                      
+  <h2>Profesores</h2>
+  <p>Los profesores que actualmente figuran en el sistema son los siguientes:</p>                                                                                      
   <div class="table-responsive">          
   <table class="table table-hover">
     <thead>
       <tr>
         <th class="col-md-1">id</th>
-        <th>Descripción</th>
-        <th>Puntuación</th>
+        <th>DNI</th>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Categoria</th>
 		<th class="col-md-1"> </th>
 		<th class="col-md-1"> </th>
 		<th class="col-md-1"> </th>
@@ -55,11 +57,13 @@
 	<tbody>
 	  <tr th:each="mark : ${markList}">
 	    <td th:text="${mark.id}"> 1</td>
-	    <td th:text="${mark.description}"> Ejercicio 1</td>
-	    <td th:text="${mark.score}">10</td>
-	    <td><a th:href="${'/mark/details/' + mark.id}">detalles</a></td>
-	    <td><a th:href="${'/mark/edit/' + mark.id}">modificar</a></td>
-	    <td><a th:href="${'/mark/delete/' + mark.id}">eliminar</a></td>
+	    <td th:text="${teacher.dni}"> 5566544564</td>
+	    <td th:text="${teacher.nombre}">10</td>
+	    <td th:text="${teacher.apellidos}">10</td>
+	    <td th:text="${teacher.categoria}">10</td>
+	    <td><a th:href="${'/teacher/details/' + mark.id}">detalles</a></td>
+	    <td><a th:href="${'/teacher/edit/' + mark.id}">modificar</a></td>
+	    <td><a th:href="${'/teacher/delete/' + mark.id}">eliminar</a></td>
 	  </tr>
 	</tbody>
   </table>
