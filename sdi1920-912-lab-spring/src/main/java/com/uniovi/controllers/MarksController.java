@@ -63,6 +63,7 @@ public class MarksController {
 	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Mark mark) {
 		mark.setId(id);
 		marksService.addMark(mark);
-		return "redirect:/mark/details/" + id;
+		return "redirect:/mark/list";
+		//"redirect:/mark/details/" + id;
 	}
 }

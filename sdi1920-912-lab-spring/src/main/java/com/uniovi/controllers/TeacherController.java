@@ -20,7 +20,7 @@ public class TeacherController {
 	
 	@RequestMapping("/teacher/list")
 	public String getList(Model model) {
-		model.addAttribute("markList", teacherService.getTeachers());
+		model.addAttribute("teacherList", teacherService.getTeachers());
 		return "teacher/list";
 	
 
@@ -42,16 +42,29 @@ public class TeacherController {
 
 	}
 
-//	@RequestMapping("/teacher/add")
-//	public String addTeacher(@ModelAttribute Teacher teacher) {
-//		teacherService.addTeacher(teacher);
-//		return "Adding teacher";
-//
-//	}
+	@RequestMapping("/teacher/add")
+	public String addTeacher(@ModelAttribute Teacher teacher) {
+		return "teacher/add";
+
+	}
 
 	@RequestMapping("/teacher/delete/{id}")
 	public String deleteTeacher(@PathVariable Long id) {
 		teacherService.deleteTeacher(id);
 		return "redirect:/teacher/list";
+	}
+
+	@RequestMapping(value = "/teacher/edit/{id}")
+	public String getEdit(Model model, @PathVariable Long id) {
+		model.addAttribute("teacher", teacherService.getTeacher(id));
+		return "teacher/edit";
+	}
+
+	@RequestMapping(value = "/teacher/edit/{id}", method = RequestMethod.POST)
+	public String setEdit(Model model, @PathVariable Long id, @ModelAttribute Teacher teacher) {
+		teacher.setId(id);
+		teacherService.addTeacher(teacher);
+		return "redirect:/teacher/list";
+		//"redirect:/teacher/details/" + id;
 	}
 }

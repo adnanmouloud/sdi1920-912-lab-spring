@@ -55,15 +55,15 @@
       </tr>
     </thead>
 	<tbody>
-	  <tr th:each="mark : ${markList}">
-	    <td th:text="${mark.id}"> 1</td>
-	    <td th:text="${teacher.dni}"> 5566544564</td>
+	  <tr th:each="teacher : ${teacherList}">
+	    <td th:text="${teacher.id}"> 1</td>
+	    <td th:text="${teacher.dni}">tttttttt</td>
 	    <td th:text="${teacher.nombre}">10</td>
 	    <td th:text="${teacher.apellidos}">10</td>
 	    <td th:text="${teacher.categoria}">10</td>
-	    <td><a th:href="${'/teacher/details/' + mark.id}">detalles</a></td>
-	    <td><a th:href="${'/teacher/edit/' + mark.id}">modificar</a></td>
-	    <td><a th:href="${'/teacher/delete/' + mark.id}">eliminar</a></td>
+	    <td><a th:href="${'/teacher/details/' + teacher.id}">detalles</a></td>
+	    <td><a th:href="${'/teacher/edit/' + teacher.id}">modificar</a></td>
+	    <td><a th:href="${'/teacher/delete/' + teacher.id}">eliminar</a></td>
 	  </tr>
 	</tbody>
   </table>
