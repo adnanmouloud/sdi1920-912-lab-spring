@@ -1,104 +1,325 @@
-/*C22*/SET SCHEMA PUBLIC
+/*C72*/SET SCHEMA PUBLIC
 drop table if exists mark CASCADE 
 drop table if exists teacher CASCADE 
+drop table if exists user CASCADE 
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), score double, primary key (id))
+create table mark (id bigint not null, description varchar(255), score double, user_id bigint, primary key (id))
 create table teacher (id bigint not null, apellidos varchar(255), categoria varchar(255), dni varchar(255), nombre varchar(255), primary key (id))
-/*C31*/SET SCHEMA PUBLIC
+create table user (id bigint not null, dni varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_jq0ta6mef3p0o47ysw6sflcdl unique (dni)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
 DISCONNECT
-/*C24*/SET SCHEMA PUBLIC
+/*C73*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C29*/SET SCHEMA PUBLIC
+/*C74*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C22*/DISCONNECT
-/*C27*/SET SCHEMA PUBLIC
+/*C75*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C28*/SET SCHEMA PUBLIC
+/*C76*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C23*/SET SCHEMA PUBLIC
+/*C77*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C25*/SET SCHEMA PUBLIC
+/*C78*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C26*/SET SCHEMA PUBLIC
+/*C79*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C30*/SET SCHEMA PUBLIC
+/*C80*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C32*/SET SCHEMA PUBLIC
+/*C81*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C82*/SET SCHEMA PUBLIC
 drop table if exists mark CASCADE 
 drop table if exists teacher CASCADE 
+drop table if exists user CASCADE 
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), score double, primary key (id))
+create table mark (id bigint not null, description varchar(255), score double, user_id bigint, primary key (id))
 create table teacher (id bigint not null, apellidos varchar(255), categoria varchar(255), dni varchar(255), nombre varchar(255), primary key (id))
-/*C33*/SET SCHEMA PUBLIC
+create table user (id bigint not null, dni varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_jq0ta6mef3p0o47ysw6sflcdl unique (dni)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
 DISCONNECT
-/*C32*/DISCONNECT
-/*C34*/SET SCHEMA PUBLIC
+/*C85*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C36*/SET SCHEMA PUBLIC
+/*C84*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C38*/SET SCHEMA PUBLIC
+/*C83*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C35*/SET SCHEMA PUBLIC
+/*C86*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C40*/SET SCHEMA PUBLIC
+/*C87*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C37*/SET SCHEMA PUBLIC
+/*C88*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C39*/SET SCHEMA PUBLIC
+/*C89*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C41*/SET SCHEMA PUBLIC
+/*C90*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C42*/SET SCHEMA PUBLIC
+/*C91*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C92*/SET SCHEMA PUBLIC
 drop table if exists mark CASCADE 
 drop table if exists teacher CASCADE 
+drop table if exists user CASCADE 
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), score double, primary key (id))
+create table mark (id bigint not null, description varchar(255), score double, user_id bigint, primary key (id))
 create table teacher (id bigint not null, apellidos varchar(255), categoria varchar(255), dni varchar(255), nombre varchar(255), primary key (id))
+create table user (id bigint not null, dni varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_jq0ta6mef3p0o47ysw6sflcdl unique (dni)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
 DISCONNECT
-/*C45*/SET SCHEMA PUBLIC
+/*C93*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C47*/SET SCHEMA PUBLIC
+/*C94*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C43*/SET SCHEMA PUBLIC
+/*C95*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C44*/SET SCHEMA PUBLIC
+/*C96*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C50*/SET SCHEMA PUBLIC
+/*C97*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C46*/SET SCHEMA PUBLIC
+/*C98*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C48*/SET SCHEMA PUBLIC
+/*C99*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C49*/SET SCHEMA PUBLIC
+/*C100*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C51*/SET SCHEMA PUBLIC
+/*C101*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C52*/SET SCHEMA PUBLIC
+/*C102*/SET SCHEMA PUBLIC
 drop table if exists mark CASCADE 
 drop table if exists teacher CASCADE 
+drop table if exists user CASCADE 
 drop sequence hibernate_sequence if exists
 create sequence hibernate_sequence start with 1 increment by 1
-create table mark (id bigint not null, description varchar(255), score double, primary key (id))
+create table mark (id bigint not null, description varchar(255), score double, user_id bigint, primary key (id))
 create table teacher (id bigint not null, apellidos varchar(255), categoria varchar(255), dni varchar(255), nombre varchar(255), primary key (id))
-/*C56*/SET SCHEMA PUBLIC
+create table user (id bigint not null, dni varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_jq0ta6mef3p0o47ysw6sflcdl unique (dni)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'99999990A','D\u00edaz','Pedro','$2a$10$VDxSW5Bn4Y.F8bLPKVGxSuvjWJXODGvPb2Xb8NAyi82TH9yQdL6ju',NULL)
+INSERT INTO MARK VALUES(2,'Nota A1',10.0E0,1)
+INSERT INTO MARK VALUES(3,'Nota A4',6.5E0,1)
+INSERT INTO MARK VALUES(4,'Nota A2',9.0E0,1)
+INSERT INTO MARK VALUES(5,'Nota A3',7.0E0,1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 6
+COMMIT
 DISCONNECT
-/*C52*/DISCONNECT
-/*C53*/SET SCHEMA PUBLIC
+/*C103*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C58*/SET SCHEMA PUBLIC
+/*C104*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C57*/SET SCHEMA PUBLIC
+/*C105*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C59*/SET SCHEMA PUBLIC
+/*C106*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C60*/SET SCHEMA PUBLIC
+/*C107*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C54*/SET SCHEMA PUBLIC
+/*C108*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C55*/SET SCHEMA PUBLIC
+/*C109*/SET SCHEMA PUBLIC
 DISCONNECT
-/*C61*/SET SCHEMA PUBLIC
+/*C110*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C111*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C112*/SET SCHEMA PUBLIC
+drop table if exists mark CASCADE 
+drop table if exists teacher CASCADE 
+drop table if exists user CASCADE 
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), score double, user_id bigint, primary key (id))
+create table teacher (id bigint not null, apellidos varchar(255), categoria varchar(255), dni varchar(255), nombre varchar(255), primary key (id))
+create table user (id bigint not null, dni varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_jq0ta6mef3p0o47ysw6sflcdl unique (dni)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'99999990A','D\u00edaz','Pedro','$2a$10$QlM8CfkzpDKbXeyq0fZj6eYufRLpP8ZA9VY.WOVWqex.D2622rJ3e',NULL)
+INSERT INTO MARK VALUES(2,'Nota A2',9.0E0,1)
+INSERT INTO MARK VALUES(3,'Nota A4',6.5E0,1)
+INSERT INTO MARK VALUES(4,'Nota A3',7.0E0,1)
+INSERT INTO MARK VALUES(5,'Nota A1',10.0E0,1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 6
+COMMIT
+DISCONNECT
+/*C113*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C114*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C115*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C116*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C117*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C118*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C119*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C120*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C121*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C122*/SET SCHEMA PUBLIC
+drop table if exists mark CASCADE 
+drop table if exists teacher CASCADE 
+drop table if exists user CASCADE 
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), score double, user_id bigint, primary key (id))
+create table teacher (id bigint not null, apellidos varchar(255), categoria varchar(255), dni varchar(255), nombre varchar(255), primary key (id))
+create table user (id bigint not null, dni varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_jq0ta6mef3p0o47ysw6sflcdl unique (dni)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'99999990A','D\u00edaz','Pedro','$2a$10$PbtDpkOFBQlInfbn7lBxBOrDWWUXMfC70zI0l6Jb7GyrKWESj2ALa',NULL)
+INSERT INTO MARK VALUES(2,'Nota A1',10.0E0,1)
+INSERT INTO MARK VALUES(3,'Nota A3',7.0E0,1)
+INSERT INTO MARK VALUES(4,'Nota A4',6.5E0,1)
+INSERT INTO MARK VALUES(5,'Nota A2',9.0E0,1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 6
+COMMIT
+DISCONNECT
+/*C123*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C124*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C125*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C126*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C127*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C128*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C129*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C130*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C131*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C132*/SET SCHEMA PUBLIC
+drop table if exists mark CASCADE 
+drop table if exists teacher CASCADE 
+drop table if exists user CASCADE 
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), score double, user_id bigint, primary key (id))
+create table teacher (id bigint not null, apellidos varchar(255), categoria varchar(255), dni varchar(255), nombre varchar(255), primary key (id))
+create table user (id bigint not null, dni varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_jq0ta6mef3p0o47ysw6sflcdl unique (dni)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'99999990A','D\u00edaz','Pedro','$2a$10$j0WrND1hehz.inSHkFMxaOhMwgu3ETUwDrwlQGNnVfln4J2KGZrmO',NULL)
+INSERT INTO MARK VALUES(2,'Nota A2',9.0E0,1)
+INSERT INTO MARK VALUES(3,'Nota A1',10.0E0,1)
+INSERT INTO MARK VALUES(4,'Nota A3',7.0E0,1)
+INSERT INTO MARK VALUES(5,'Nota A4',6.5E0,1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 6
+COMMIT
+INSERT INTO USER VALUES(6,'99999991B','N\u00fa\u00f1ez','Lucas','$2a$10$cXS.KsuuenR7D8oew6nhWu/s3qIFKIifoDm1O1dGj57YZyguB4khW',NULL)
+INSERT INTO MARK VALUES(7,'Nota B3',8.0E0,6)
+INSERT INTO MARK VALUES(8,'Nota B2',4.3E0,6)
+INSERT INTO MARK VALUES(9,'Nota B4',3.5E0,6)
+INSERT INTO MARK VALUES(10,'Nota B1',5.0E0,6)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 11
+COMMIT
+INSERT INTO USER VALUES(11,'99999992C','Rodr\u00edguez','Mar\u00eda','$2a$10$kEeU7ckxgbb7hS4F94SzVuufZ8E21HEzRBe2ZbDKmK41/JxKv064y',NULL)
+INSERT INTO MARK VALUES(12,'Nota C2',6.6E0,11)
+INSERT INTO MARK VALUES(13,'Nota C1',5.5E0,11)
+INSERT INTO MARK VALUES(14,'Nota C3',7.0E0,11)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 15
+COMMIT
+INSERT INTO USER VALUES(15,'99999993D','Almonte','Marta','$2a$10$boDEo2aALaHqp9GLIvMXxuhkPpQoWw0MH2ELRELXdiWnr0CS5o2Jy',NULL)
+INSERT INTO MARK VALUES(16,'Nota D1',10.0E0,15)
+INSERT INTO MARK VALUES(17,'Nota D2',8.0E0,15)
+INSERT INTO MARK VALUES(18,'Nota D3',9.0E0,15)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 19
+COMMIT
+INSERT INTO USER VALUES(19,'99999977E','Valdes','Pelayo','$2a$10$ZTrVfnfv6OCWz2sHCGZ7q.BzluP80bnL.dpDJurNrgDtgX14JpwJ6',NULL)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 20
+COMMIT
+INSERT INTO USER VALUES(20,'99999988F','N\u00fa\u00f1ez','Edward','$2a$10$2RjAgE3.poBrNp.AQMTVz.9kbLe5Awkda7RpbW4VOZorSVi35TKv2',NULL)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 21
+COMMIT
+DISCONNECT
+/*C133*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C135*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C141*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C140*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C136*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C137*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C138*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C134*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C139*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C142*/SET SCHEMA PUBLIC
+drop table if exists mark CASCADE 
+drop table if exists teacher CASCADE 
+drop table if exists user CASCADE 
+drop sequence hibernate_sequence if exists
+create sequence hibernate_sequence start with 1 increment by 1
+create table mark (id bigint not null, description varchar(255), score double, user_id bigint, primary key (id))
+create table teacher (id bigint not null, apellidos varchar(255), categoria varchar(255), dni varchar(255), nombre varchar(255), primary key (id))
+create table user (id bigint not null, dni varchar(255), last_name varchar(255), name varchar(255), password varchar(255), role varchar(255), primary key (id))
+alter table user add constraint UK_jq0ta6mef3p0o47ysw6sflcdl unique (dni)
+alter table mark add constraint FKlqq420tc6l50pax8so16fane0 foreign key (user_id) references user
+INSERT INTO USER VALUES(1,'99999990A','D\u00edaz','Pedro','$2a$10$l84UW8iWDCmkX.QADX88V.o2ZTq33Rlmsih4IVkXJHADIte6R1g1m',NULL)
+INSERT INTO MARK VALUES(2,'Nota A4',6.5E0,1)
+INSERT INTO MARK VALUES(3,'Nota A1',10.0E0,1)
+INSERT INTO MARK VALUES(4,'Nota A3',7.0E0,1)
+INSERT INTO MARK VALUES(5,'Nota A2',9.0E0,1)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 6
+COMMIT
+INSERT INTO USER VALUES(6,'99999991B','N\u00fa\u00f1ez','Lucas','$2a$10$bNfLwjiKgDns6Mz6xMUkCeZPDmDUonGJAp.wHxaLv807cKZlQfj4u',NULL)
+INSERT INTO MARK VALUES(7,'Nota B4',3.5E0,6)
+INSERT INTO MARK VALUES(8,'Nota B1',5.0E0,6)
+INSERT INTO MARK VALUES(9,'Nota B3',8.0E0,6)
+INSERT INTO MARK VALUES(10,'Nota B2',4.3E0,6)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 11
+COMMIT
+INSERT INTO USER VALUES(11,'99999992C','Rodr\u00edguez','Mar\u00eda','$2a$10$dgoqDWx805Pn14CeWq1cG.dVxeNxhcWuveVZCiinqCQpw0Qqd56Su',NULL)
+INSERT INTO MARK VALUES(12,'Nota C1',5.5E0,11)
+INSERT INTO MARK VALUES(13,'Nota C3',7.0E0,11)
+INSERT INTO MARK VALUES(14,'Nota C2',6.6E0,11)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 15
+COMMIT
+INSERT INTO USER VALUES(15,'99999993D','Almonte','Marta','$2a$10$gkIl22P8OLBwHKlgRBE1o.ZDcKzAicsQPLfFqQYVlCnCvdsP/GLHG',NULL)
+INSERT INTO MARK VALUES(16,'Nota D1',10.0E0,15)
+INSERT INTO MARK VALUES(17,'Nota D2',8.0E0,15)
+INSERT INTO MARK VALUES(18,'Nota D3',9.0E0,15)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 19
+COMMIT
+INSERT INTO USER VALUES(19,'99999977E','Valdes','Pelayo','$2a$10$thwzHJrq0p6EDIaCcdw.3eG9uJdFBOpxNJfgn6HxHKc1Q1DnU9Vja',NULL)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 20
+COMMIT
+INSERT INTO USER VALUES(20,'99999988F','N\u00fa\u00f1ez','Edward','$2a$10$kFTfkQAITqlGVPhhbZk6v.bwBjC8DxKhFN51hLJxY1Ahc04ZohmZO',NULL)
+ALTER SEQUENCE PUBLIC.HIBERNATE_SEQUENCE RESTART WITH 21
+COMMIT
+DISCONNECT
+/*C147*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C143*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C144*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C145*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C146*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C149*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C150*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C148*/SET SCHEMA PUBLIC
+DISCONNECT
+/*C151*/SET SCHEMA PUBLIC
 DISCONNECT
