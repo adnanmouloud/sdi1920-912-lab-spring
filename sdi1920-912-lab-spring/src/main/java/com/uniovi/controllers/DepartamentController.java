@@ -58,7 +58,7 @@ public class DepartamentController {
 
 	@RequestMapping("/departament/delete/{id}")
 	public String delete(@PathVariable Long id) {
-		departamentsService.getDepartamentoById(id);
+		departamentsService.deleteDepartamento(id);
 		return "redirect:/departament/list";
 	}
 

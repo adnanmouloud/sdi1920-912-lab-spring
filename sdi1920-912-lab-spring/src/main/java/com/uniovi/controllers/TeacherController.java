@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uniovi.entities.Teacher;
+import com.uniovi.services.DepartamentService;
 import com.uniovi.services.TeacherService;
 
 @Controller
@@ -16,6 +17,9 @@ public class TeacherController {
 	
 	@Autowired
 	private TeacherService teacherService;
+	
+	@Autowired
+	private DepartamentService departamentsService;
 	
 	
 	@RequestMapping("/teacher/list")
@@ -36,14 +40,16 @@ public class TeacherController {
 	}
 	
 	@RequestMapping(value = "/teacher/add", method = RequestMethod.POST)
-	public String setTeacher(@ModelAttribute Teacher teacher) {
+	public String setTeacher(Model model,@ModelAttribute Teacher teacher) {
 		teacherService.addTeacher(teacher);
+		model.addAttribute("departamentsList", departamentsService.getDepartaments());
 		return "redirect:/teacher/list";
 
 	}
 
 	@RequestMapping("/teacher/add")
-	public String addTeacher(@ModelAttribute Teacher teacher) {
+	public String addTeacher(Model model, @ModelAttribute Teacher teacher) {
+		model.addAttribute("departamentsList", departamentsService.getDepartaments());
 		return "teacher/add";
 
 	}
