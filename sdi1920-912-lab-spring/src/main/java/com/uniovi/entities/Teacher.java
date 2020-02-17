@@ -12,13 +12,18 @@ public class Teacher {
 	private String apellidos;
 	private String categoria;
 	
-	public Teacher(Long id, String dni, String nombre, String apellidos, String categoria) {
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private Departamento departamento;
+	
+	public Teacher(Long id, String dni, String nombre, String apellidos, String categoria, Departamento departamento) {
 		super();
 		this.id = id;
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellidos = apellidos;
 		this.categoria = categoria;
+		this.departamento = departamento;
 	}
 	
 	public Teacher() {
@@ -70,6 +75,16 @@ public class Teacher {
 	public void setCategoria(String categoria) {
 		this.categoria = categoria;
 	}
+
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	public void setDepartamento(Departamento departamento) {
+		this.departamento = departamento;
+	}
+	
+	
 	
 	
 }
