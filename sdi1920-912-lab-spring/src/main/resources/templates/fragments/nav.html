@@ -12,33 +12,30 @@
 		<div class="collapse navbar-collapse" id="myNavbar">
 			<ul class="nav navbar-nav">
 				<li><a href="/">Home</a></li>
-				<li id="marks-menu" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					Gestión de notas <span class="caret"></span>
-					</a>
+				<li id="marks-menu" class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#" th:text="#{note.management}"> Gestión de notas <span 
+						class="caret"></span>
+				</a>
 					<ul class="dropdown-menu">
 						<li><a href="/mark/add">Agregar Nota</a></li>
 						<li><a href="/mark/list">Ver Notas</a></li>
-					</ul>
-				</li>
-				<li id="users-menu" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					Gestión de Usuarios <span class="caret"></span>
-					</a>
+					</ul></li>
+				<li id="users-menu" class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#" th:text="#{user.management}"> Gestión de Usuarios <span
+						class="caret"></span>
+				</a>
 					<ul class="dropdown-menu">
 						<li><a href="/user/add">Agregar Usuario</a></li>
 						<li><a href="/user/list">Ver Usuarios</a></li>
-					</ul>
-				</li>
-				<li id="users-menu" class="dropdown">
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#">
-					Gestión de Departamentos <span class="caret"></span>
-					</a>
+					</ul></li>
+				<li id="users-menu" class="dropdown"><a class="dropdown-toggle"
+					data-toggle="dropdown" href="#" th:text="#{department.management}"> Gestión de Departamentos <span
+						class="caret"></span>
+				</a>
 					<ul class="dropdown-menu">
 						<li><a href="/departament/add">Agregar Departamento</a></li>
 						<li><a href="/departament/list">Ver Departamentos</a></li>
-					</ul>
-				</li>
+					</ul></li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a id="btnLanguage" href="
@@ -58,10 +55,14 @@
 								style="border: 0; float: left; margin-right: 15px" /> <span
 								th:text="#{language.es}">Español</span>
 						</a></li>
-					</ul></li>
-
+						<li><a id="btnFrench" value="FR"> <img
+								th:src="@{/img/if_french_flag.png}"
+								style="border: 0; float: left; margin-right: 15px" /> <span
+								th:text="#{language.fr}">Francés</span>
+						</a></li>
+					</ul>
 				<li><a href="/signup" th:text="#{signup.message}"> <span
-						class="glyphicon glyphicon-user"></span> Registrate
+						class="glyphicon glyphicon-user"></span> Regístrate
 				</a></li>
 				<li><a href="/login" th:text="#{login.message}">> <span
 						class="glyphicon glyphicon-log-in"></span> Identifícate
