@@ -10,7 +10,7 @@ import com.uniovi.entities.Departamento;
 import com.uniovi.services.DepartamentService;
 
 @Component
-public class signUpDepartamentFormValidator implements Validator {
+public class SignUpDepartamentFormValidator implements Validator {
 
 	
 	@Autowired
@@ -27,7 +27,7 @@ public class signUpDepartamentFormValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "descripcion", "Error.empty");
 		
 		if (departament.getDescripcion().length() < 5 || departament.getDescripcion().length() > 24) {
-			errors.rejectValue("descripcion", "Error.signup.descripcion.length");
+			errors.rejectValue("dni", "Error.signup.dni.length");
 		}
 	
 	}

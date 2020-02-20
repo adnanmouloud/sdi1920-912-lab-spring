@@ -35,6 +35,12 @@ public class TeacherService {
 		public void deleteTeacher(Long id){
 			teacherRepository.deleteById(id);
 		}
+		
+		
+		public Teacher getTeacherByDni(String dni) {
+			return teacherRepository.findByDni(dni);
+		}
+		
 
 	
 	

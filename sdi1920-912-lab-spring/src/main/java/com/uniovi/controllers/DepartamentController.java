@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.uniovi.entities.Departamento;
 import com.uniovi.services.DepartamentService;
 import com.uniovi.services.SecurityService;
-import com.uniovi.validators.signUpDepartamentFormValidator;
+import com.uniovi.validators.SignUpDepartamentFormValidator;
 
 @Controller
 public class DepartamentController {
@@ -25,7 +25,7 @@ public class DepartamentController {
 	private SecurityService securityService;
 	
 	@Autowired
-	private signUpDepartamentFormValidator signUpDepartamentFormValidator;
+	private SignUpDepartamentFormValidator signUpDepartamentFormValidator;
 
 	@RequestMapping("/departament/list")
 	public String getListado(Model model) {

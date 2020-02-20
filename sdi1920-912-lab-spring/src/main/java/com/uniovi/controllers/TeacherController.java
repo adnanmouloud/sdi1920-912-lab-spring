@@ -3,14 +3,17 @@ package com.uniovi.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.uniovi.entities.Mark;
 import com.uniovi.entities.Teacher;
 import com.uniovi.services.DepartamentService;
 import com.uniovi.services.TeacherService;
+import com.uniovi.validators.SignUpTeacherFormValidator;
 
 @Controller
 public class TeacherController {
@@ -20,6 +23,9 @@ public class TeacherController {
 	
 	@Autowired
 	private DepartamentService departamentsService;
+	
+	@Autowired
+	private SignUpTeacherFormValidator signUpTeacherFormValidator;
 	
 	
 	@RequestMapping("/teacher/list")
@@ -40,7 +46,11 @@ public class TeacherController {
 	}
 	
 	@RequestMapping(value = "/teacher/add", method = RequestMethod.POST)
-	public String setTeacher(Model model,@ModelAttribute Teacher teacher) {
+	public String setTeacher(Model model,@ModelAttribute Teacher teacher,BindingResult result) {
+		signUpTeacherFormValidator.validate(teacher, result);
+		if(result.hasErrors()) {
+			return "teacher/add";
+		}
 		teacherService.addTeacher(teacher);
 		model.addAttribute("departamentsList", departamentsService.getDepartaments());
 		return "redirect:/teacher/list";
@@ -50,6 +60,7 @@ public class TeacherController {
 	@RequestMapping("/teacher/add")
 	public String addTeacher(Model model, @ModelAttribute Teacher teacher) {
 		model.addAttribute("departamentsList", departamentsService.getDepartaments());
+		model.addAttribute("teacher", new Teacher());
 		return "teacher/add";
 
 	}
