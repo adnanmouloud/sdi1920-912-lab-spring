@@ -1,11 +1,14 @@
 package com.uniovi.controllers;
 
-import java.util.HashSet;
-import java.util.Set;
+
+
+import java.security.Principal;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,38 +19,40 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.uniovi.entities.Mark;
+import com.uniovi.entities.User;
 import com.uniovi.services.MarksService;
 import com.uniovi.services.UsersService;
 import com.uniovi.validators.SignUpMarkFormValidator;
 
 @Controller
 public class MarksController {
-	
+
 	@Autowired
 	private HttpSession httpSession;
 
 	@Autowired // Inyectar el servicio
 	private MarksService marksService;
-	
+
 	@Autowired
 	private UsersService usersService;
-	
+
 	@Autowired
 	private SignUpMarkFormValidator signUpMarkFormValidator;
 
-
 	@RequestMapping("/mark/list")
-	public String getList(Model model) {
-		
-		model.addAttribute("markList", marksService.getMarks());
+	public String getList(Model model, Principal principal) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		String dni = auth.getName();
+		User user = usersService.getUserByDni(dni);
+		model.addAttribute("markList", marksService.getMarksForUser(user));
 		return "mark/list";
 	}
 
 	@RequestMapping(value = "/mark/add", method = RequestMethod.POST)
 	public String setMark(@Validated Mark mark, BindingResult result, Model model) {
 		signUpMarkFormValidator.validate(mark, result);
-		if(result.hasErrors()) {
-			model.addAttribute("usersList", usersService.getUsers());			
+		if (result.hasErrors()) {
+			model.addAttribute("usersList", usersService.getUsers());
 			return "mark/add";
 		}
 		marksService.addMark(mark);
@@ -67,7 +72,6 @@ public class MarksController {
 		marksService.deleteMark(id);
 		return "redirect:/mark/list";
 	}
-
 
 	@RequestMapping(value = "/mark/add")
 	public String getMark(Model model) {
@@ -91,24 +95,27 @@ public class MarksController {
 		original.setDescription(mark.getDescription());
 		marksService.addMark(original);
 
-		return "redirect:/mark/details/"+id;
-		
+		return "redirect:/mark/details/" + id;
+
 	}
-	
+
 	@RequestMapping("/mark/list/update")
-	public String updateList(Model model){
-	model.addAttribute("markList", marksService.getMarks() );
-	return "mark/list :: tableMarks";
+	public String updateList(Model model, Principal principal) {
+		String dni = principal.getName(); // DNI es el name de la autenticación
+		User user = usersService.getUserByDni(dni);
+		model.addAttribute("markList", marksService.getMarksForUser(user));
+		return "mark/list :: tableMarks";
 	}
-	
-	@RequestMapping(value="/mark/{id}/resend", method=RequestMethod.GET)
-	public String setResendTrue(Model model, @PathVariable Long id){
-	marksService.setMarkResend(true, id);
-	return "redirect:/mark/list";
+
+	@RequestMapping(value = "/mark/{id}/resend", method = RequestMethod.GET)
+	public String setResendTrue(Model model, @PathVariable Long id) {
+		marksService.setMarkResend(true, id);
+		return "redirect:/mark/list";
 	}
-	@RequestMapping(value="/mark/{id}/noresend", method=RequestMethod.GET)
-	public String setResendFalse(Model model, @PathVariable Long id){
-	marksService.setMarkResend(false, id);
-	return "redirect:/mark/list";
+
+	@RequestMapping(value = "/mark/{id}/noresend", method = RequestMethod.GET)
+	public String setResendFalse(Model model, @PathVariable Long id) {
+		marksService.setMarkResend(false, id);
+		return "redirect:/mark/list";
 	}
 }

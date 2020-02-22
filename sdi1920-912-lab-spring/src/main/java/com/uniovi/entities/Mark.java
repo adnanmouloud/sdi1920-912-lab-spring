@@ -10,7 +10,7 @@ public class Mark {
 	private Long id;
 	private String description;
 	private Double score;
-	private Boolean resend = false;
+	private boolean resend = false;
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
@@ -70,11 +70,11 @@ public class Mark {
 		this.user = user;
 	}
 
-	public Boolean getResend() {
+	public boolean getResend() {
 		return resend;
 	}
 
-	public void setResend(Boolean resend) {
+	public void setResend(boolean resend) {
 		this.resend = resend;
 	}
 

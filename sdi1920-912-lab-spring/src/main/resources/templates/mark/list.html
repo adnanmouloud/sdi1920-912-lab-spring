@@ -48,8 +48,8 @@
 										 class="btn btn-info">Reenviar</button>
 										 <script th:inline="javascript">
 											 /*<![CDATA[*/
-												$( "#resendButton[[${mark.id}]]" ).click(function() {
-												 $.get( "/mark/[[${mark.id}]]/noresend", function( data ) {
+												$("#resendButton[[${mark.id}]]" ).click(function() {
+												 $.get("/mark/[[${mark.id}]]/noresend", function( data ) {
 												 $("#tableMarks").load('/mark/list/update');
 												 });
 												 });
