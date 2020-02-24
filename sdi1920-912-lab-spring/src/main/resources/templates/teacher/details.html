@@ -12,7 +12,7 @@
 
 
 	<div class="container">
-		<h2>Detalles del profesor</h2>
+		<h2 sec:authorize="hasAnyRole('ROLE_PROFESSOR','ROLE_ADMIN')">Detalles del profesor</h2>
 		<div class="panel panel-default">
 			<div class="panel-heading">Dni</div>
 			<div class="panel-body" th:text="${teacher.dni}">Ejercicio 1</div>
