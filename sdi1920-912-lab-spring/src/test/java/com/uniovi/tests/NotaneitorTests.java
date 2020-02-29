@@ -11,6 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import com.uniovi.tests.pageobjects.PO_HomeView;
+import com.uniovi.tests.pageobjects.PO_LoginView;
 import com.uniovi.tests.pageobjects.PO_Properties;
 import com.uniovi.tests.pageobjects.PO_RegisterView;
 import com.uniovi.tests.pageobjects.PO_View;
@@ -93,37 +94,89 @@ public class NotaneitorTests {
 	// PR05. Prueba del formulario de registro. registro con datos correctos
 	@Test
 	public void PR05() {
-	//Vamos al formulario de registro
-	PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
-	//Rellenamos el formulario.
-	PO_RegisterView.fillForm(driver, "77777778A", "Josefo", "Perez", "77777",
-	"77777");
-	//Comprobamos que entramos en la sección privada
-	PO_View.checkElement(driver, "text", "Notas del usuario");
-	}
-	
-	//PR06. Prueba del formulario de registro. DNI repetido en la BD, Nombre corto, .... pagination pagination-centered, Error.signup.dni.length
-	@Test
-	public void PR06() {
-	//Vamos al formulario de registro
-	PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
-	//Rellenamos el formulario.
-	PO_RegisterView.fillForm(driver, "99999990A", "Josefo", "Perez", "77777",
-	"77777");
-	PO_View.getP();
-	//COmprobamos el error de DNI repetido.
-		PO_RegisterView.checkKey(driver, "Error.signup.dni.duplicate",
-	PO_Properties.getSPANISH() );
-	//Rellenamos el formulario.
-	PO_RegisterView.fillForm(driver, "99999990B", "Jose", "Perez", "77777",
-	"77777");
-	//COmprobamos el error de Nombre corto .
-	PO_RegisterView.checkKey(driver, "Error.signup.name.length",
-	PO_Properties.getSPANISH() );
-	//Rellenamos el formulario.
-	PO_RegisterView.fillForm(driver, "99999990B", "Josefo", "Per", "77777",
-	"77777");
+		// Vamos al formulario de registro
+		PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+		// Rellenamos el formulario.
+		PO_RegisterView.fillForm(driver, "77777778A", "Josefo", "Perez", "77777", "77777");
+		// Comprobamos que entramos en la sección privada
+		PO_View.checkElement(driver, "text", "Notas del usuario");
 	}
 
+	// PR06. Prueba del formulario de registro. DNI repetido en la BD, Nombre corto,
+	// .... pagination pagination-centered, Error.signup.dni.length
+	@Test
+	public void PR06() {
+		// Vamos al formulario de registro
+		PO_HomeView.clickOption(driver, "signup", "class", "btn btn-primary");
+		// Rellenamos el formulario.
+		PO_RegisterView.fillForm(driver, "99999990A", "Josefo", "Perez", "77777", "77777");
+		PO_View.getP();
+		// COmprobamos el error de DNI repetido.
+		PO_RegisterView.checkKey(driver, "Error.signup.dni.duplicate", PO_Properties.getSPANISH());
+		// Rellenamos el formulario.
+		PO_RegisterView.fillForm(driver, "99999990B", "Jose", "Perez", "77777", "77777");
+		// COmprobamos el error de Nombre corto .
+		PO_RegisterView.checkKey(driver, "Error.signup.name.length", PO_Properties.getSPANISH());
+		// Rellenamos el formulario.
+		PO_RegisterView.fillForm(driver, "99999990B", "Josefo", "Per", "77777", "77777");
+	}
+
+	// PR7. Loguearse con exito desde el ROl de Usuario, 99999990D, 123456
+	@Test
+	public void PR07() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999990A", "123456");
+		// COmprobamos que entramos en la pagina privada de Alumno
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+	}
+
+	// PR8. Loguearse con exito desde el ROl de Profesor, 99999993D, 123456
+	@Test
+	public void PR08() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999993D", "123456");
+		// COmprobamos que entramos en la pagina privada de Profesor
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+	}
+
+	// PR9. Loguearse con exito desde el ROl de Administrador, 99999988F, 123456
+	@Test
+	public void PR09() {
+		// Vamos al formulario de logueo.
+		PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+		// Rellenamos el formulario
+		PO_LoginView.fillForm(driver, "99999988F", "123456");
+		// COmprobamos que entramos en la pagina privada de Administrador
+		PO_View.checkElement(driver, "text", "Notas del usuario");
+	}
+	
+	// PR10. Loguearse sin éxito desde el ROl de Usuario, 99999990D, 123456
+		@Test
+		public void PR010() {
+			// Vamos al formulario de logueo.
+			PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+			// Rellenamos el formulario
+			PO_LoginView.fillForm(driver, "99999990A", "12333456");
+			// COmprobamos que entramos en la pagina privada de Alumno
+			PO_View.checkElement(driver, "text", "Password:");
+		}
+		
+		// PR11. Loguearse sin éxito desde el ROl de Usuario y desconexión con usuario de ROL usuario, 99999990D, 123456
+				@Test
+				public void PR011() {
+					// Vamos al formulario de logueo.
+					PO_HomeView.clickOption(driver, "login", "class", "btn btn-primary");
+					// Rellenamos el formulario
+					PO_LoginView.fillForm(driver, "99999990A", "123456");
+					// COmprobamos que entramos en la pagina privada de Alumno
+					PO_View.checkElement(driver, "text", "Notas del usuario");
+					
+					// Vamos al formulario de logueo.
+					PO_HomeView.clickOption(driver, "logout", "class", "btn btn-primary");
+				}
 
 }
