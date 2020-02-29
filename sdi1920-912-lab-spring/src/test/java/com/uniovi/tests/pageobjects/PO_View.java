@@ -1,4 +1,4 @@
-package com.uniovi;
+package com.uniovi.tests.pageobjects;
 
 import java.util.List;
 

@@ -1,4 +1,4 @@
-package com.uniovi;
+package com.uniovi.tests.pageobjects;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
