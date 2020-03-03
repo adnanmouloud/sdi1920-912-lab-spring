@@ -33,6 +33,7 @@ public class PO_NavView extends PO_View {
 		// Esperamos a que sea visible un elemento concreto
 		elementos = SeleniumUtils.EsperaCargaPagina(driver, criterio, textoDestino, getTimeout());
 		// Tiene que haber un sólo elemento.
+		System.err.println(elementos.size());
 		assertTrue(elementos.size() == 1);
 	}
 

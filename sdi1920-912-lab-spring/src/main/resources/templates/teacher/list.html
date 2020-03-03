@@ -36,7 +36,7 @@
 						<td th:text="${teacher.apellidos}">10</td>
 						<td th:text="${teacher.categoria}">10</td>
 						<td><a th:href="${'/teacher/details/' + teacher.id}">detalles</a></td>
-						<td><a th:href="${'/teacher/edit/' + teacher.id}">modificar</a></td>
+						<td><a th:href="${'/teacher/edit/' + teacher.id}" sec:authorize="hasRole('ROLE_ADMIN')">modificar</a></td>
 						<td><a th:href="${'/teacher/delete/' + teacher.id}">eliminar</a></td>
 					</tr>
 				</tbody>
